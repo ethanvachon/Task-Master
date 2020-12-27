@@ -1,5 +1,6 @@
 import { ProxyState } from "../AppState.js"
 import { listService } from "../Services/ListService.js"
+import { saveToLocalStorage } from "../Utils/LocalStorage.js"
 
 function _drawListItems(index, ids, name) {
   let template = ''
@@ -24,6 +25,7 @@ function _drawCompleted(index) {
 export default class ListController {
   constructor() {
     ProxyState.on("lists", _drawLists)
+    ProxyState.on("lists", saveToLocalStorage)
   }
   deleteList(index) {
     listService.deleteList(index)
@@ -51,6 +53,7 @@ export default class ListController {
         document.getElementById(i.id).checked = true
       }
     })
+    saveToLocalStorage()
   }
 
   addList() {
@@ -88,5 +91,6 @@ export default class ListController {
         document.getElementById(i.id).checked = true
       }
     })
+    saveToLocalStorage()
   }
 }
