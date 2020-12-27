@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Langar&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/style/main.css">
+    <title>checkpoint-3</title>
+</head>
+
+<body>
+    <header class='container-fluid'>
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center align-items-center head text-primary">
+                <h1 class="display-1">List Maker</h1>
+            </div>
+        </div>
+        <div class="row pb-3 border-bottom">
+            <div class="col-12">
+                <div>
+                    <form class=" d-flex flex-row align-items-center" onsubmit="app.listController.addList()">
+                        <input type="text" required placeholder="List Name" class="list-name border-bottom"
+                            id="list-name" maxlength="15" minlength="3">
+                        <h4 class="color-label pl-2">Color:</h4>
+                        <input type="color" class="color text-primary" value="#3BA5DC" id="list-color">
+                        <button type="submit" class="btn btn-outline-primary ml-3">Create</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="container-fluid">
+        <div class="row" id="lists">
+
+
+
+
+        </div>
+    </main>
+
+    <script src="app/main.js" type="module"></script>
+</body>
+
+</html>
