@@ -12,6 +12,7 @@ export function _drawListItems(index, ids, name) {
   if (name) {
     document.getElementById(name).innerText = ProxyState.lists[index].quantity
   }
+
 }
 function _drawLists() {
   let template = ''

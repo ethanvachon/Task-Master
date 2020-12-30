@@ -1,13 +1,13 @@
 import { generateId } from "../Utils/IdGenerator.js"
 import { ProxyState } from "../AppState.js"
 export class ListItem {
-    constructor(item, index, name, id) {
+    constructor(item, index, name, id, checked) {
         this.item = item
         this.id = generateId()
         this.index = index
         this.name = name
         this.ids = id
-        this.checked = false
+        this.checked = checked || false
     }
 
     get Template() {

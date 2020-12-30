@@ -12,16 +12,25 @@ export function loadFromLocalStorage() {
   let index = JSON.parse(window.localStorage.getItem("index"))
   if (lists) {
     lists.forEach(i => {
-      let y = 0
       let listItems = []
       i.listItems.forEach(x => {
-        listItems = [...listItems, new ListItem(x.item, i.index, x.name, i.id)]
+        listItems = [...listItems, new ListItem(x.item, i.index, x.name, i.id, x.checked)]
+
       })
       ProxyState.lists = [...ProxyState.lists, new List({ name: i.name, color: i.color, listItems: listItems, id: i.id, completed: i.completed, quantity: i.quantity, index: i.index })]
+
+      for (let y = 0; y < ProxyState.lists.length; y++) {
+        _drawListItems(y, ProxyState.lists[y].id, i.name)
+      }
       console.log(ProxyState.lists)
-      _drawListItems(y, i.id, i.name)
-      y++
     })
+    for (let i = 0; i < ProxyState.lists.length; i++) {
+      ProxyState.lists[i].listItems.forEach(x => {
+        if (x.checked == true) {
+          document.getElementById(x.id).checked = true
+        }
+      })
+    }
   }
   if (index) {
     ProxyState.index = index
