@@ -1,4 +1,4 @@
-import ListController from "./Controllers/ListController.js"
+import { ListController } from "./Controllers/ListController.js"
 
 class App {
 

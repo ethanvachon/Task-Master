@@ -1,8 +1,9 @@
 import { ProxyState } from "../AppState.js"
 import { listService } from "../Services/ListService.js"
 import { saveToLocalStorage } from "../Utils/LocalStorage.js"
+import { loadFromLocalStorage } from "../Utils/LocalStorage.js"
 
-function _drawListItems(index, ids, name) {
+export function _drawListItems(index, ids, name) {
   let template = ''
   let items = ProxyState.lists[index].listItems
   items.forEach(i => template += i.Template)
@@ -22,10 +23,10 @@ function _drawCompleted(index) {
   document.getElementById(index).innerText = ProxyState.lists[index].completed
 }
 
-export default class ListController {
+export class ListController {
   constructor() {
     ProxyState.on("lists", _drawLists)
-    ProxyState.on("lists", saveToLocalStorage)
+    loadFromLocalStorage()
   }
   deleteList(index) {
     listService.deleteList(index)
@@ -40,6 +41,7 @@ export default class ListController {
         }
       })
     }
+    saveToLocalStorage()
   }
   addListItem(index, name, id) {
     window.event.preventDefault()
@@ -65,6 +67,7 @@ export default class ListController {
     }
     list.reset()
     listService.addList(newList)
+    console.log(ProxyState.lists)
     for (let i = 0; i < ProxyState.lists.length; i++) {
       _drawListItems(i, ProxyState.lists[i].id)
     }
@@ -75,11 +78,13 @@ export default class ListController {
         }
       })
     }
+    saveToLocalStorage()
   }
 
   listIncrement(id, index) {
     listService.listIncrement(id, index)
     _drawCompleted(index)
+    saveToLocalStorage()
   }
   deleteListItem(index, id, name, ids) {
     listService.deleteListItem(index, id)

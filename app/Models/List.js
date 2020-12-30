@@ -26,14 +26,14 @@ export class ListItem {
 }
 
 export class List {
-    constructor({ name, color }) {
-        this.listItems = []
+    constructor({ name, color, listItems, id, completed, quantity, index }) {
+        this.listItems = listItems || []
         this.name = name
-        this.id = generateId()
-        this.completed = 0
-        this.quantity = 0
+        this.id = id || generateId()
+        this.completed = completed || 0
+        this.quantity = quantity || 0
         this.color = color
-        this.index = ProxyState.index
+        this.index = index || ProxyState.index
     }
 
     get Template() {
