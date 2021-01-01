@@ -30,19 +30,21 @@ export class ListController {
     loadFromLocalStorage()
   }
   deleteList(index) {
-    listService.deleteList(index)
-    _drawLists()
-    for (let i = 0; i < ProxyState.lists.length; i++) {
-      _drawListItems(i, ProxyState.lists[i].id)
+    if (window.confirm("Do you really want to delete this list?")) {
+      listService.deleteList(index)
+      _drawLists()
+      for (let i = 0; i < ProxyState.lists.length; i++) {
+        _drawListItems(i, ProxyState.lists[i].id)
+      }
+      for (let i = 0; i < ProxyState.lists.length; i++) {
+        ProxyState.lists[i].listItems.forEach(x => {
+          if (x.checked == true) {
+            document.getElementById(x.id).checked = true
+          }
+        })
+      }
+      saveToLocalStorage()
     }
-    for (let i = 0; i < ProxyState.lists.length; i++) {
-      ProxyState.lists[i].listItems.forEach(x => {
-        if (x.checked == true) {
-          document.getElementById(x.id).checked = true
-        }
-      })
-    }
-    saveToLocalStorage()
   }
   addListItem(index, name, id) {
     window.event.preventDefault()
