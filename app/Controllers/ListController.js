@@ -90,15 +90,17 @@ export class ListController {
     saveToLocalStorage()
   }
   deleteListItem(index, id, name, ids) {
-    listService.deleteListItem(index, id)
-    _drawCompleted(index)
-    _drawListItems(index, ids, name)
-    let items = ProxyState.lists[index].listItems
-    items.forEach(i => {
-      if (i.checked == true) {
-        document.getElementById(i.id).checked = true
-      }
-    })
-    saveToLocalStorage()
+    if (window.confirm("Do you really want to delete this list?")) {
+      listService.deleteListItem(index, id)
+      _drawCompleted(index)
+      _drawListItems(index, ids, name)
+      let items = ProxyState.lists[index].listItems
+      items.forEach(i => {
+        if (i.checked == true) {
+          document.getElementById(i.id).checked = true
+        }
+      })
+      saveToLocalStorage()
+    }
   }
 }
