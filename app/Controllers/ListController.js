@@ -8,7 +8,6 @@ export function _drawListItems(index, ids, name) {
   let items = ProxyState.lists[index].listItems
   items.forEach(i => template += i.Template)
   document.getElementById(ids).innerHTML = template
-
   if (name) {
     document.getElementById(name).innerText = ProxyState.lists[index].quantity
   }
@@ -35,8 +34,6 @@ export class ListController {
       _drawLists()
       for (let i = 0; i < ProxyState.lists.length; i++) {
         _drawListItems(i, ProxyState.lists[i].id)
-      }
-      for (let i = 0; i < ProxyState.lists.length; i++) {
         ProxyState.lists[i].listItems.forEach(x => {
           if (x.checked == true) {
             document.getElementById(x.id).checked = true
@@ -70,11 +67,8 @@ export class ListController {
     }
     list.reset()
     listService.addList(newList)
-    console.log(ProxyState.lists)
     for (let i = 0; i < ProxyState.lists.length; i++) {
       _drawListItems(i, ProxyState.lists[i].id)
-    }
-    for (let i = 0; i < ProxyState.lists.length; i++) {
       ProxyState.lists[i].listItems.forEach(x => {
         if (x.checked == true) {
           document.getElementById(x.id).checked = true
@@ -90,7 +84,7 @@ export class ListController {
     saveToLocalStorage()
   }
   deleteListItem(index, id, name, ids) {
-    if (window.confirm("Do you really want to delete this list?")) {
+    if (window.confirm("Do you really want to delete this list item?")) {
       listService.deleteListItem(index, id)
       _drawCompleted(index)
       _drawListItems(index, ids, name)

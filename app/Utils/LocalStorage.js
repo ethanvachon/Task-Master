@@ -22,12 +22,12 @@ export function loadFromLocalStorage() {
       for (let y = 0; y < ProxyState.lists.length; y++) {
         _drawListItems(y, ProxyState.lists[y].id, i.name)
       }
-      console.log(ProxyState.lists)
     })
     for (let i = 0; i < ProxyState.lists.length; i++) {
       ProxyState.lists[i].listItems.forEach(x => {
         if (x.checked == true) {
           document.getElementById(x.id).checked = true
+          document.getElementById(`item${x.id}`).classList.add("completed")
         }
       })
     }

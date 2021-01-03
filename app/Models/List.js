@@ -15,7 +15,7 @@ export class ListItem {
         return /*html*/`
         <div class="d-flex justify-content-between max-width">
             <input class="form-check-input" type="checkbox" value="" id="${this.id}" onclick="app.listController.listIncrement('${this.id}', ${this.index})">
-            <label class="form-check-label sick-font h5" for="defaultCheck1">
+            <label class="form-check-label sick-font h5" for="defaultCheck1" id="item${this.id}">
                 ${this.item}
               
             </label>

@@ -16,7 +16,7 @@ class ListService {
       ProxyState.lists[index].listItems.forEach(element => {
         if (element.id == id) {
           element.checked = true
-          console.log(element.checked)
+          document.getElementById(`item${element.id}`).classList.add("completed")
         }
       });
     } else {
@@ -24,7 +24,7 @@ class ListService {
       ProxyState.lists[index].listItems.forEach(element => {
         if (element.id == id) {
           element.checked = false
-          console.log(element.checked)
+          document.getElementById(`item${element.id}`).classList.remove("completed")
         }
       });
     }

@@ -10728,6 +10728,8 @@ main {
   top: 5px;
   right: 5px;
 }
-
+.completed{
+  text-decoration: line-through;
+}
 
 /*# sourceMappingURL=main.css.map */
