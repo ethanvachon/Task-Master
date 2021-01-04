@@ -51,7 +51,7 @@ export class List {
 
                         <form class="my-2  pb-2 border-bottom d-flex justify-content-around"
                             onsubmit="app.listController.addListItem(${this.index}, '${this.name}', '${this.id}')">
-                            <input type="text" class="no-border" id="item" required>
+                            <input type="text" class="no-border" id="item" required minlength="3" maxlength="50">
                             <button type="submit" class="btn btn-outline-success py-1">+</button>
                         </form>
                     </ul>
