@@ -19,7 +19,7 @@ export class ListItem {
                 ${this.item}
               
             </label>
-                <i class="fas fa-trash text-danger pr-2" onclick="app.listController.deleteListItem(${this.index}, '${this.id}', '${this.name}', '${this.ids}')"></i>
+                <i class="fas fa-trash text-danger pr-2" onclick="app.listController.deleteListItem(${this.index}, '${this.id}', '${this.ids}')"></i>
         </div>
         `
     }
@@ -43,7 +43,7 @@ export class List {
                     <ul class="list-group list-group-flush">
                         <div class="text-light pb-2" style="background-color:${this.color}">
                             <li class="text-center pt-3 h2 sick-font">${this.name}<i class="far fa-times-circle" onclick="app.listController.deleteList(${this.index})"></i></li>
-                            <li class="text-center p-0 sick-font h5"><span id="${this.index}">${this.completed}</span>/<span id="${this.name}">${this.quantity}</span></li>
+                            <li class="text-center p-0 sick-font h5"><span id="${this.index}">${this.completed}</span>/<span id="quan${this.id}">${this.quantity}</span></li>
                         </div>
                         <div class="py-3 pl-5" id="${this.id}">
 

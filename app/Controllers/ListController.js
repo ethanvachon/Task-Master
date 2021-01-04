@@ -3,15 +3,20 @@ import { listService } from "../Services/ListService.js"
 import { saveToLocalStorage } from "../Utils/LocalStorage.js"
 import { loadFromLocalStorage } from "../Utils/LocalStorage.js"
 
-export function _drawListItems(index, ids, name) {
+export function _drawListItems(index, ids) {
   let template = ''
   let items = ProxyState.lists[index].listItems
-  items.forEach(i => template += i.Template)
+  items.forEach(i => {
+    template += i.Template
+  })
   document.getElementById(ids).innerHTML = template
-  if (name) {
-    document.getElementById(name).innerText = ProxyState.lists[index].quantity
-  }
+  document.getElementById(`quan${ProxyState.lists[index].id}`).innerText = ProxyState.lists[index].quantity
+  items.forEach(x => {
+    if (x.checked == true) {
+      document.getElementById(`item${x.id}`).classList.add("completed")
 
+    }
+  })
 }
 function _drawLists() {
   let template = ''
@@ -48,7 +53,7 @@ export class ListController {
     let item = window.event.target['item'].value
     listService.addListItem(item, index, name, id)
     window.event.target.reset()
-    _drawListItems(index, id, name)
+    _drawListItems(index, id)
     let items = ProxyState.lists[index].listItems
     items.forEach(i => {
       if (i.checked == true) {
@@ -83,11 +88,11 @@ export class ListController {
     _drawCompleted(index)
     saveToLocalStorage()
   }
-  deleteListItem(index, id, name, ids) {
+  deleteListItem(index, id, ids) {
     if (window.confirm("Do you really want to delete this list item?")) {
       listService.deleteListItem(index, id)
       _drawCompleted(index)
-      _drawListItems(index, ids, name)
+      _drawListItems(index, ids)
       let items = ProxyState.lists[index].listItems
       items.forEach(i => {
         if (i.checked == true) {
