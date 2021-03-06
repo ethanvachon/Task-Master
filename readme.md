@@ -1,20 +1,4 @@
-checkpoint-3
+Task Master
 ============
 
-### Get Started
-
-```terminal
-> npm i
-> npm run sass
-> npm run serve
-```
-
-### AuthConfig
-
-Fill in your AuthConfig with keys from [Auth0](https://auth0.com/)
-
-```javascript
-export const domain = '' 
-export const clientId = '' 
-export const audience = '' 
-```
+Task master is a front end application using javascript in the MVC pattern. It is a simple and practical application that can be used to track different tasks that need to be accomplished and I've used it myself to plan out tasks for a given day.
